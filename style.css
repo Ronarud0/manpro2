@@ -1,0 +1,102 @@
+/* CSS terpisah untuk Website Club Basket - Tema Hijau Elegan */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f6fff6;
+    color: #003300;
+}
+
+header {
+    background: #0c6b27;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+nav {
+    background: #0a5a20;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #b6ffb6;
+}
+
+.hero {
+    padding: 60px;
+    text-align: center;
+    background: #dfffe0;
+    animation: fadeIn 1s ease-in-out;
+}
+
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea, button {
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #0c6b27;
+}
+
+button {
+    background: #0c6b27;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #0a5a20;
+}
+
+footer {
+    background: #0c6b27;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
