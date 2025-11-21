@@ -4,75 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Green Elite Basketball Club</title>
-  <style>
-    :root{
-      --bg:#f3f9f5;
-      --primary:#1b8f4b;
-      --primary-dark:#0f5f31;
-      --accent:#8bd686;
-      --muted:#5f6f65;
-      --card:#ffffff;
-      font-family:'Segoe UI',Arial,sans-serif;
-    }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:#0f1c13;line-height:1.5;transition:background .3s,color .3s}
+  <link rel="stylesheet" href="club-basket-style.css">
 
-    /* Header */
-    header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:var(--card);box-shadow:0 4px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:20}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px}
-    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:500;padding:6px 10px;border-radius:6px;transition:.2s}
-    nav a:hover{background:var(--accent);color:#0f1c13}
-
-    /* Hero */
-    .hero{padding:50px 28px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-    .hero h1{font-size:42px;color:var(--primary-dark);font-weight:800;margin-bottom:12px}
-    .hero p{color:var(--muted);margin-bottom:20px;font-size:17px}
-    .hero .cta{background:var(--primary);color:white;padding:12px 20px;text-decoration:none;border-radius:10px;font-weight:600;transition:.2s}
-    .hero .cta:hover{background:var(--primary-dark)}
-
-    .fade-up{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
-    .fade-up.show{opacity:1;transform:translateY(0)}
-
-    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
-
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px}
-    .gallery img{width:100%;border-radius:10px;transition:.3s;cursor:pointer}
-    .gallery img:hover{transform:scale(1.05)}
-
-    .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:.3s}
-    .lightbox img{max-width:90%;max-height:90%;border-radius:10px}
-    .lightbox.show{visibility:visible;opacity:1}
-
-    /* Team */
-    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
-    .player{display:flex;align-items:center;gap:12px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:.3s}
-    .player:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,0.08)}
-    .avatar{width:60px;height:60px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:var(--primary-dark);font-weight:bold;font-size:20px}
-
-    /* Table */
-    table{width:100%;border-collapse:collapse;margin-top:12px}
-    th,td{padding:12px;border-bottom:1px solid #dce8df;text-align:left}
-    th{background:#eaf3ec;color:var(--primary-dark)}
-
-    /* Form */
-    form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
-    input,select,textarea{padding:12px;border-radius:8px;border:1px solid #d7e5d9;font-size:15px}
-    textarea{grid-column:1/3;height:110px}
-    button{grid-column:1/3;padding:12px;border:none;background:var(--primary);color:white;font-weight:bold;border-radius:8px;font-size:16px;transition:.2s}
-    button:hover{background:var(--primary-dark)}
-
-    /* Footer */
-    footer{padding:28px;background:var(--primary-dark);color:#e8f5ee;text-align:center;margin-top:20px}
-
-    /* Dark Mode */
-    .dark{--bg:#0e1a14;--card:#13251c;--muted:#9eb8a7;--primary:#2fbf6c;--primary-dark:#198747;--accent:#5ce68f;color:white}
-
-    #darkToggle{cursor:pointer;padding:8px 14px;background:var(--primary);border:none;border-radius:8px;color:white;margin-left:20px}
-
-    @media(max-width:850px){.hero{grid-template-columns:1fr}}
-  </style>
 </head>
 <body>
   <header>
