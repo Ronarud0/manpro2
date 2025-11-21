@@ -12,34 +12,44 @@
       --accent:#8bd686;
       --muted:#5f6f65;
       --card:#ffffff;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family:'Segoe UI',Arial,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:#0f1c13;line-height:1.5}
+    body{background:var(--bg);color:#0f1c13;line-height:1.5;transition:background .3s,color .3s}
 
     /* Header */
     header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;background:var(--card);box-shadow:0 4px 10px rgba(0,0,0,0.05);position:sticky;top:0;z-index:20}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:48px;height:48px;border-radius:50%;background:linear-gradient(145deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px}
-    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:500;padding:6px 10px;border-radius:6px}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:500;padding:6px 10px;border-radius:6px;transition:.2s}
     nav a:hover{background:var(--accent);color:#0f1c13}
 
     /* Hero */
     .hero{padding:50px 28px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
-    .hero h1{font-size:38px;color:var(--primary-dark);font-weight:800;margin-bottom:12px}
-    .hero p{color:var(--muted);margin-bottom:20px}
-    .hero .cta{background:var(--primary);color:white;padding:12px 20px;text-decoration:none;border-radius:10px;font-weight:600}
+    .hero h1{font-size:42px;color:var(--primary-dark);font-weight:800;margin-bottom:12px}
+    .hero p{color:var(--muted);margin-bottom:20px;font-size:17px}
+    .hero .cta{background:var(--primary);color:white;padding:12px 20px;text-decoration:none;border-radius:10px;font-weight:600;transition:.2s}
     .hero .cta:hover{background:var(--primary-dark)}
+
+    .fade-up{opacity:0;transform:translateY(20px);transition:opacity .8s ease, transform .8s ease}
+    .fade-up.show{opacity:1;transform:translateY(0)}
 
     .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
 
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px}
+    .gallery img{width:100%;border-radius:10px;transition:.3s;cursor:pointer}
+    .gallery img:hover{transform:scale(1.05)}
+
+    .lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;visibility:hidden;opacity:0;transition:.3s}
+    .lightbox img{max-width:90%;max-height:90%;border-radius:10px}
+    .lightbox.show{visibility:visible;opacity:1}
+
     /* Team */
     .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:16px}
-    .player{display:flex;align-items:center;gap:12px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.05)}
+    .player{display:flex;align-items:center;gap:12px;background:var(--card);padding:12px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.05);transition:.3s}
+    .player:hover{transform:translateY(-6px);box-shadow:0 8px 20px rgba(0,0,0,0.08)}
     .avatar{width:60px;height:60px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:var(--primary-dark);font-weight:bold;font-size:20px}
-
-    section{padding:32px 28px}
-    .container{max-width:1150px;margin:auto}
 
     /* Table */
     table{width:100%;border-collapse:collapse;margin-top:12px}
@@ -50,13 +60,17 @@
     form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
     input,select,textarea{padding:12px;border-radius:8px;border:1px solid #d7e5d9;font-size:15px}
     textarea{grid-column:1/3;height:110px}
-    button{grid-column:1/3;padding:12px;border:none;background:var(--primary);color:white;font-weight:bold;border-radius:8px;font-size:16px}
+    button{grid-column:1/3;padding:12px;border:none;background:var(--primary);color:white;font-weight:bold;border-radius:8px;font-size:16px;transition:.2s}
     button:hover{background:var(--primary-dark)}
 
     /* Footer */
     footer{padding:28px;background:var(--primary-dark);color:#e8f5ee;text-align:center;margin-top:20px}
 
-    /* Responsive */
+    /* Dark Mode */
+    .dark{--bg:#0e1a14;--card:#13251c;--muted:#9eb8a7;--primary:#2fbf6c;--primary-dark:#198747;--accent:#5ce68f;color:white}
+
+    #darkToggle{cursor:pointer;padding:8px 14px;background:var(--primary);border:none;border-radius:8px;color:white;margin-left:20px}
+
     @media(max-width:850px){.hero{grid-template-columns:1fr}}
   </style>
 </head>
@@ -72,32 +86,34 @@
     <nav>
       <a href="#about">Tentang</a>
       <a href="#team">Tim</a>
+      <a href="#gallery">Galeri</a>
       <a href="#schedule">Jadwal</a>
       <a href="#contact">Kontak</a>
     </nav>
+    <button id="darkToggle">Dark Mode</button>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero fade-up">
       <div>
-        <h1>Green Elite — Bermain Dengan Elegan & Energi</h1>
-        <p>Kami adalah klub basket yang berfokus pada teknik, sportivitas, dan pengembangan komunitas. Bergabunglah dengan suasana hijau yang sehat dan penuh semangat.</p>
+        <h1>Green Elite — Elegan, Fokus, Kompetitif</h1>
+        <p>Kami adalah klub basket yang mengutamakan perkembangan skill, kedisiplinan, dan kebersamaan dalam suasana hijau yang menenangkan.</p>
         <a class="cta" href="#contact">Gabung Sekarang</a>
       </div>
       <div class="card">
-        <h3>Pengumuman</h3>
-        <p style="color:var(--muted)">Latihan rutin dimulai setiap Rabu & Sabtu pukul 17.00 — Lapangan Hijau Indoor.</p>
+        <h3>Pengumuman Terbaru</h3>
+        <p style="color:var(--muted)">Pembukaan pendaftaran anggota baru — mulai Januari 2026.</p>
       </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="fade-up">
       <div class="container card">
         <h2 style="color:var(--primary-dark)">Tentang Kami</h2>
-        <p style="color:var(--muted)">Green Elite dibentuk tahun 2020 sebagai komunitas basket yang sehat, dinamis, dan ramah untuk segala usia. Kami mengedepankan teknik bermain yang benar, disiplin, dan kekompakan.</p>
+        <p style="color:var(--muted)">Green Elite adalah klub basket modern yang mengedepankan performa, sportivitas, dan gaya elegan. Kami menerima anggota dari segala usia.</p>
       </div>
     </section>
 
-    <section id="team">
+    <section id="team" class="fade-up">
       <div class="container card">
         <h2 style="color:var(--primary-dark)">Tim Inti</h2>
         <div class="team-grid">
@@ -108,26 +124,38 @@
       </div>
     </section>
 
-    <section id="schedule">
+    <section id="gallery" class="fade-up">
       <div class="container card">
-        <h2 style="color:var(--primary-dark)">Jadwal Latihan & Pertandingan</h2>
+        <h2 style="color:var(--primary-dark)">Galeri Kegiatan</h2>
+        <div class="gallery">
+          <img src="https://via.placeholder.com/300x200?text=Latihan+1" />
+          <img src="https://via.placeholder.com/300x200?text=Latihan+2" />
+          <img src="https://via.placeholder.com/300x200?text=Pertandingan" />
+          <img src="https://via.placeholder.com/300x200?text=Komunitas" />
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="lightbox"><img src="" id="lightImg" /></div>
+
+    <section id="schedule" class="fade-up">
+      <div class="container card">
+        <h2 style="color:var(--primary-dark)">Jadwal Terbaru</h2>
         <table>
-          <thead>
-            <tr><th>Tanggal</th><th>Acara</th><th>Lokasi</th></tr>
-          </thead>
+          <thead><tr><th>Tanggal</th><th>Kegiatan</th><th>Lokasi</th></tr></thead>
           <tbody>
-            <tr><td>10 Des 2025</td><td>Latihan Teknik Dasar</td><td>Lapangan Indoor</td></tr>
-            <tr><td>13 Des 2025</td><td>Sparring vs Green Lions</td><td>Stadion Kota</td></tr>
-            <tr><td>17 Des 2025</td><td>Latihan Intensif</td><td>Lapangan Utama</td></tr>
+            <tr><td>10 Jan 2026</td><td>Latihan Pembukaan Musim</td><td>Lapangan Utama</td></tr>
+            <tr><td>15 Jan 2026</td><td>Sparring Team Hijau</td><td>Arena Kota</td></tr>
+            <tr><td>20 Jan 2026</td><td>Pelatihan Skill Shoot</td><td>Indoor Hall</td></tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="fade-up">
       <div class="container card">
         <h2 style="color:var(--primary-dark)">Gabung Bersama Kami</h2>
-        <form onsubmit="event.preventDefault();alert('Terima kasih! Kami akan segera menghubungi Anda.')">
+        <form onsubmit="event.preventDefault();alert('Terima kasih! Data Anda telah kami terima.')">
           <input type="text" placeholder="Nama" required />
           <input type="email" placeholder="Email" required />
           <input type="text" placeholder="Nomor HP" required />
@@ -147,5 +175,26 @@
   <footer>
     © 2025 Green Elite Basketball Club · Semua Hak Dilindungi
   </footer>
+
+  <script>
+    // Fade-in scroll animation
+    const observer=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})
+    },{threshold:0.2});
+    document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+    // Lightbox
+    const lb=document.getElementById('lightbox');
+    const lbImg=document.getElementById('lightImg');
+    document.querySelectorAll('.gallery img').forEach(img=>{
+      img.onclick=()=>{lb.classList.add('show');lbImg.src=img.src;}
+    });
+    lb.onclick=()=>lb.classList.remove('show');
+
+    // Dark mode toggle
+    document.getElementById('darkToggle').onclick=()=>{
+      document.body.classList.toggle('dark');
+    }
+  </script>
 </body>
 </html>
